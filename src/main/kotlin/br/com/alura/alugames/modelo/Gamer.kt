@@ -1,12 +1,15 @@
 package br.com.alura.alugames.modelo
 
 import org.example.br.com.alura.alugames.modelo.Jogo
-import java.util.Scanner
+import java.util.*
 
 
 data class Gamer(var nome: String, var email: String) {
     var dataNascimento: String? = null
-    val jogosBuscados  = mutableListOf<Jogo?>()
+    val jogosBuscados = mutableListOf<Jogo?>()
+    val jogosAlugados = mutableListOf<Aluguel>()
+    val plano: PlanoAvulso= PlanoAvulso("BRONZE")
+
     var usuario: String? = null
         set(value) {
             field = value
@@ -17,7 +20,6 @@ data class Gamer(var nome: String, var email: String) {
     var idInterno: String? = null
         get
         private set
-
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
             this(nome, email) {
         this.dataNascimento = dataNascimento
@@ -39,7 +41,7 @@ data class Gamer(var nome: String, var email: String) {
 
 
     override fun toString(): String {
-        return "Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
+        return "\n Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
     }
 
     fun criarIdInterno() {
@@ -59,6 +61,13 @@ data class Gamer(var nome: String, var email: String) {
 
     }
 
+    fun alugaJogo(jogo: Jogo,periodo:Periodo): Aluguel {
+        val aluguel= Aluguel(this, jogo, periodo )
+        jogosAlugados.add(aluguel)
+        return aluguel
+
+    }
+
     companion object {
         fun criarGamer(leitura: Scanner): Gamer {
             println("Boas vindas ao AluGames! Vamos fazer seu cadastro. Digite seu nome:")
@@ -74,7 +83,7 @@ data class Gamer(var nome: String, var email: String) {
                 val usuario = leitura.nextLine()
                 return Gamer(nome, email, nascimento, usuario)
             }
-            return Gamer(nome,email)
+            return Gamer(nome, email)
         }
     }
 
