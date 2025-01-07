@@ -2,13 +2,18 @@ package br.com.alura.alugames.modelo
 
 import org.example.br.com.alura.alugames.modelo.Jogo
 import java.util.*
+import kotlin.random.Random
 
 
 data class Gamer(var nome: String, var email: String) {
     var dataNascimento: String? = null
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
-    val plano: PlanoAvulso= PlanoAvulso("BRONZE")
+    var plano: Plano = PlanoAssinatura(
+        "BRONZE",
+        mensalidade = TODO(),
+        jogosInclusos = TODO()
+    )
 
     var usuario: String? = null
         set(value) {
@@ -20,6 +25,8 @@ data class Gamer(var nome: String, var email: String) {
     var idInterno: String? = null
         get
         private set
+
+
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
             this(nome, email) {
         this.dataNascimento = dataNascimento
@@ -39,18 +46,24 @@ data class Gamer(var nome: String, var email: String) {
         return value
     }
 
+    fun jogosDoMes(mes: Int): List<Jogo> {
+        return jogosAlugados.filter { aluguel ->
+            aluguel.periodo.dataInicial.monthValue == mes
+        }
+            .map { aluguel -> aluguel.jogo }
+    }
 
     override fun toString(): String {
         return "\n Gamer(nome='$nome', email='$email', dataNascimento=$dataNascimento, usuario=$usuario, idInterno=$idInterno)"
     }
 
     fun criarIdInterno() {
-        val numero = kotlin.random.Random.nextInt(100000)
+        val numero = Random.nextInt(100000)
         val tag = String.format("%04d", numero)
         idInterno = "$usuario#$tag"
     }
 
-    @kotlin.Throws(IllegalArgumentException::class)
+    @Throws(IllegalArgumentException::class)
     fun validarEmail(): String {
         val regex = Regex("^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,6}$")
         if (regex.matches(email)) {
@@ -61,8 +74,8 @@ data class Gamer(var nome: String, var email: String) {
 
     }
 
-    fun alugaJogo(jogo: Jogo,periodo:Periodo): Aluguel {
-        val aluguel= Aluguel(this, jogo, periodo )
+    fun alugaJogo(jogo: Jogo, periodo: Periodo): Aluguel {
+        val aluguel = Aluguel(this, jogo, periodo)
         jogosAlugados.add(aluguel)
         return aluguel
 

@@ -1,4 +1,5 @@
 import br.com.alura.alugames.modelo.Periodo
+import br.com.alura.alugames.modelo.PlanoAssinatura
 import br.com.alura.alugames.servicos.ConsumoApi
 import org.example.br.com.alura.alugames.modelo.Jogo
 import java.time.LocalDate
@@ -21,10 +22,15 @@ fun main() {
     gamerCaroline.alugaJogo(jogoResidenteVillace, periodo)
     gamerCaroline.alugaJogo(jogoSpider, periodo2)
     gamerCaroline.alugaJogo(jogoTheLastOfUs, periodo3)
-
-
- /*   println(gamerCaroline)
-    println(jogoResidenteVillace)*/
-    println(gamerCaroline.jogosAlugados)
+    var gamerCamila = listaGamer.get(5)
+    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3)
+    gamerCamila.alugaJogo(jogoResidenteVillace,periodo)
+    gamerCamila.alugaJogo(jogoSpider,periodo2)
+    gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
+    gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
+    /*   println(gamerCaroline)
+       println(jogoResidenteVillace)*/
+   // println(gamerCaroline.jogosAlugados)
+    println(gamerCamila.jogosAlugados)
 
 }
