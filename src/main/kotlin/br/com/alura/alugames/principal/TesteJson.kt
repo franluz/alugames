@@ -23,7 +23,7 @@ fun main() {
     gamerCaroline.alugaJogo(jogoSpider, periodo2)
     gamerCaroline.alugaJogo(jogoTheLastOfUs, periodo3)
     var gamerCamila = listaGamer.get(5)
-    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3)
+    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3,0.15)
     gamerCamila.alugaJogo(jogoResidenteVillace,periodo)
     gamerCamila.alugaJogo(jogoSpider,periodo2)
     gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
@@ -35,6 +35,7 @@ fun main() {
        println(jogoResidenteVillace)*/
    // println(gamerCaroline.jogosAlugados)
     println(gamerCamila)
-
+    gamerCamila.alugaJogo(jogoResidenteVillace,periodo)
+    println(gamerCamila.jogosAlugados)
 
 }

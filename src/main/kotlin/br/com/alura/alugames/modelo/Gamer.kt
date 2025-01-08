@@ -12,10 +12,8 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
     private val notas = mutableListOf<Int>()
     override val media: Double
         get() = notas.average()
-    var plano: Plano = PlanoAssinatura(
-        "BRONZE",
-        mensalidade = 0.0,
-        jogosInclusos = 3
+    var plano: Plano = PlanoAvulso(
+        "BRONZE"
     )
 
     var usuario: String? = null
@@ -30,6 +28,9 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
         private set
 
     override fun recomendar(nota: Int) {
+        if (nota < 0 || nota > 10) {
+            throw Exception("Valor incorreto por favor use o intervalo de 0 a 10")
+        }
         notas.add(nota)
     }
 
