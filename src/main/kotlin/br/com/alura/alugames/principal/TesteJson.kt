@@ -28,9 +28,13 @@ fun main() {
     gamerCamila.alugaJogo(jogoSpider,periodo2)
     gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
     gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
+    gamerCamila.recomendar(7)
+    gamerCamila.recomendar(10)
+    gamerCamila.recomendar(8)
     /*   println(gamerCaroline)
        println(jogoResidenteVillace)*/
    // println(gamerCaroline.jogosAlugados)
-    println(gamerCamila.jogosAlugados)
+    println(gamerCamila)
+
 
 }
