@@ -68,7 +68,7 @@ fun main() {
     val serializacao = gson.toJson(gamerCamila.jogosRecomendados)
     println("Serializacao")
     println(serializacao)
-    val arquivo = File("jogosRecomendados.json")
+    val arquivo = File("jogosRecomendados-${gamerCamila.nome}.json")
     arquivo.writeText(serializacao)
     println(arquivo.absolutePath)
 
