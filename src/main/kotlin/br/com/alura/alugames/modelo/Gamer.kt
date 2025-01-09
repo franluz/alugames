@@ -10,11 +10,13 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
     private val notas = mutableListOf<Int>()
+    val jogosRecomendados = mutableListOf<Jogo>()
     override val media: Double
         get() = notas.average()
     var plano: Plano = PlanoAvulso(
         "BRONZE"
     )
+
 
     var usuario: String? = null
         set(value) {
@@ -33,7 +35,10 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
         }
         notas.add(nota)
     }
-
+    fun recomendarJogo(jogo: Jogo,nota:Int){
+        jogo.recomendar(nota)
+        jogosRecomendados.add(jogo)
+    }
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
             this(nome, email) {
         this.dataNascimento = dataNascimento
