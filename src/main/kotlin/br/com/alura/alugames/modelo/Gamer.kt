@@ -16,8 +16,6 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
     var plano: Plano = PlanoAvulso(
         "BRONZE"
     )
-
-
     var usuario: String? = null
         set(value) {
             field = value
@@ -35,10 +33,12 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
         }
         notas.add(nota)
     }
-    fun recomendarJogo(jogo: Jogo,nota:Int){
+
+    fun recomendarJogo(jogo: Jogo, nota: Int) {
         jogo.recomendar(nota)
         jogosRecomendados.add(jogo)
     }
+
     constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
             this(nome, email) {
         this.dataNascimento = dataNascimento
@@ -67,11 +67,11 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
 
     override fun toString(): String {
         return "\n Gamer(nome='$nome', " +
-                "email='$email'," +
-                " dataNascimento=$dataNascimento, " +
-                "usuario=$usuario," +
-                " idInterno=$idInterno, " +
-                "reputacao=$media)"
+                "\n email='$email'," +
+                "\n dataNascimento=$dataNascimento, " +
+                "\n usuario=$usuario," +
+                "\n idInterno=$idInterno, " +
+                "\n Reputacao= ${String.format("%.2f", media)})"
     }
 
     fun criarIdInterno() {
