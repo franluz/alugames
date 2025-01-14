@@ -5,7 +5,7 @@ import java.util.*
 import kotlin.random.Random
 
 
-data class Gamer(var nome: String, var email: String) : Recomendavel {
+data class Gamer(var nome: String, var email: String, var Id: Int) : Recomendavel {
     var dataNascimento: String? = null
     val jogosBuscados = mutableListOf<Jogo?>()
     val jogosAlugados = mutableListOf<Aluguel>()
@@ -39,8 +39,8 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
         jogosRecomendados.add(jogo)
     }
 
-    constructor(nome: String, email: String, dataNascimento: String, usuario: String) :
-            this(nome, email) {
+    constructor(nome: String, email: String, dataNascimento: String, usuario: String, Id: Int) :
+            this(nome, email, Id) {
         this.dataNascimento = dataNascimento
         this.usuario = usuario
         criarIdInterno()
@@ -66,7 +66,8 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
     }
 
     override fun toString(): String {
-        return "\n Gamer(nome='$nome', " +
+        return "\n Gamer(  \"\\n Id='$Id',\" +" +
+                "nome='$nome', " +
                 "\n email='$email'," +
                 "\n dataNascimento=$dataNascimento, " +
                 "\n usuario=$usuario," +
@@ -111,9 +112,9 @@ data class Gamer(var nome: String, var email: String) : Recomendavel {
                 val nascimento = leitura.nextLine()
                 println("Digite seu nome de usuário:")
                 val usuario = leitura.nextLine()
-                return Gamer(nome, email, nascimento, usuario)
+                return Gamer(nome, email, nascimento, usuario,0)
             }
-            return Gamer(nome, email)
+            return Gamer(nome, email,0)
         }
     }
 

@@ -4,9 +4,9 @@ class PlanoAssinatura(
     tipo: String,
     val mensalidade: Double,
     val jogosInclusos: Int,
-    val percentualDescontoReputacao: Double
-
-) : Plano(tipo) {
+    val percentualDescontoReputacao: Double,
+     id: Int=0
+) : Plano(tipo, id) {
 
     override fun obterValor(aluguel: Aluguel): Double {
         var totalJogosNoMes = aluguel.gamer.jogosDoMes(aluguel.periodo.dataInicial.monthValue).size + 1

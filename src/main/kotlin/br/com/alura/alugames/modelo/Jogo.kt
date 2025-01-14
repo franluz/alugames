@@ -5,7 +5,9 @@ import com.google.gson.annotations.Expose
 
 data class Jogo(
    @Expose val titulo: String,
-   @Expose val capa: String
+   @Expose val capa: String,
+    var Id: Int
+
 ) : Recomendavel {
     var descricao: String? = null
     var preco = 0.0
@@ -14,7 +16,9 @@ data class Jogo(
         get() = notas.average()
 
     override fun toString(): String {
-        return "\n Jogo(Titulo:'$titulo'," +
+        return "\n Jogo(" +
+                " Id= $Id"+
+                "\n Titulo:'$titulo'," +
                 "\n Capa:'$capa'," +
                 "\n Descricao:'$descricao'" +
                 "\n Preco: $preco," +
