@@ -4,17 +4,16 @@ import java.sql.Connection
 import java.sql.DriverManager
 import java.sql.SQLException
 
-class Banco {
+object Banco {
     // código omitido
 
-    class Banco {
         fun obterConexao(): Connection? {
             return try {
-                DriverManager.getConnection("jdbc:mysql://localhost:3306/alugames", "root", "aLxXzDcgueZu6z")
+                DriverManager.getConnection("jdbc:mysql://localhost:3306/alugames", "root", "lsm979FRAN!!")
             } catch (e: SQLException) {
                 e.printStackTrace()
                 null
             }
         }
-    }
+
 }
