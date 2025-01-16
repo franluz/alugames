@@ -29,8 +29,9 @@ data class Jogo(
         titulo: String,
         capa: String,
         preco: Double,
-        descricao: String
-    ) : this(titulo, capa) {
+        descricao: String,
+        Id: Int = 0
+    ) : this(titulo, capa, Id) {
         this.preco = preco
         this.descricao = descricao
     }
