@@ -4,9 +4,9 @@ import br.com.alura.alugames.modelo.Recomendavel
 import com.google.gson.annotations.Expose
 
 data class Jogo(
-   @Expose val titulo: String,
-   @Expose val capa: String,
-    var Id: Int
+    @Expose val titulo: String,
+    @Expose val capa: String,
+    var Id: Int = 0
 
 ) : Recomendavel {
     var descricao: String? = null
@@ -17,7 +17,7 @@ data class Jogo(
 
     override fun toString(): String {
         return "\n Jogo(" +
-                " Id= $Id"+
+                " Id= $Id" +
                 "\n Titulo:'$titulo'," +
                 "\n Capa:'$capa'," +
                 "\n Descricao:'$descricao'" +

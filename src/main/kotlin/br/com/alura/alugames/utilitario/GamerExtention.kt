@@ -8,7 +8,8 @@ fun InfoGamerJson.criaGamer(): Gamer {
         this.nome,
         this.email,
         this.dataNascimento,
-        this.usuario
+        this.usuario,
+
     )
 
 }

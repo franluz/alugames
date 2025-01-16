@@ -39,7 +39,7 @@ data class Gamer(var nome: String, var email: String, var Id: Int) : Recomendave
         jogosRecomendados.add(jogo)
     }
 
-    constructor(nome: String, email: String, dataNascimento: String, usuario: String, Id: Int) :
+    constructor(nome: String, email: String, dataNascimento: String, usuario: String, Id: Int = 0) :
             this(nome, email, Id) {
         this.dataNascimento = dataNascimento
         this.usuario = usuario
@@ -112,9 +112,9 @@ data class Gamer(var nome: String, var email: String, var Id: Int) : Recomendave
                 val nascimento = leitura.nextLine()
                 println("Digite seu nome de usuário:")
                 val usuario = leitura.nextLine()
-                return Gamer(nome, email, nascimento, usuario,0)
+                return Gamer(nome, email, nascimento, usuario, 0)
             }
-            return Gamer(nome, email,0)
+            return Gamer(nome, email, 0)
         }
     }
 
