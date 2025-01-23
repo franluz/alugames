@@ -2,11 +2,12 @@ package org.example.br.com.alura.alugames.modelo
 
 import br.com.alura.alugames.modelo.Recomendavel
 import com.google.gson.annotations.Expose
+import javax.persistence.*
 
 data class Jogo(
     @Expose val titulo: String,
     @Expose val capa: String,
-    var Id: Int = 0
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) var Id: Int = 0
 
 ) : Recomendavel {
     var descricao: String? = null
@@ -29,7 +30,7 @@ data class Jogo(
         titulo: String,
         capa: String,
         preco: Double,
-        descricao: String,
+        descricao: String?,
         Id: Int = 0
     ) : this(titulo, capa, Id) {
         this.preco = preco

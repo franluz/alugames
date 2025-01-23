@@ -2,11 +2,34 @@ import br.com.alura.alugames.modelo.Periodo
 import br.com.alura.alugames.modelo.PlanoAssinatura
 import br.com.alura.alugames.servicos.ConsumoApi
 import com.google.gson.GsonBuilder
-import org.example.br.com.alura.alugames.modelo.Jogo
 import java.io.File
 import java.time.LocalDate
+import kotlin.math.pow
 
-fun main() {
+
+fun generate(phrase: String): String {
+    var retornoAcronomo:String = ""
+    if (phrase.isNotEmpty()) {
+        var acronomuns = phrase.filter{it.isLetter() or it.equals(' ')  or it.equals('-')}
+            .split(" ", "-")
+        println(acronomuns)
+        var acron = acronomuns.filter { it.trim().length>0 }.map { it.trim().substring(0, 1) }.joinToString("")
+        retornoAcronomo = acron.toString().uppercase()
+    }
+    return retornoAcronomo
+}
+fun check(input: Int): Boolean {
+    val inputAsString = input.toString()
+    val sum = input.toString().map {
+        it.digitToInt().toDouble().pow(inputAsString.length.toDouble())
+    }.sum()
+    return sum == input.toDouble()
+}
+fun main2() {
+    println(check(143))
+}
+
+fun main1() {
     val consumo = ConsumoApi()
     val listaGamer = consumo.buscaGamer()
     val jogoApi = consumo.buscaJogo("150")
@@ -31,11 +54,11 @@ fun main() {
     gamerCaroline.alugaJogo(jogoTheLastOfUs, periodo3)
     var gamerCamila = listaGamer.get(5)
 
-    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3,0.15)
-    gamerCamila.alugaJogo(jogoResidenteVillace,periodo)
-    gamerCamila.alugaJogo(jogoSpider,periodo2)
-    gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
-    gamerCamila.alugaJogo(jogoTheLastOfUs,periodo3)
+    gamerCamila.plano = PlanoAssinatura("PRATA", 9.90, 3, 0.15)
+    gamerCamila.alugaJogo(jogoResidenteVillace, periodo)
+    gamerCamila.alugaJogo(jogoSpider, periodo2)
+    gamerCamila.alugaJogo(jogoTheLastOfUs, periodo3)
+    gamerCamila.alugaJogo(jogoTheLastOfUs, periodo3)
     gamerCamila.recomendar(7)
     gamerCamila.recomendar(10)
     gamerCamila.recomendar(8)
@@ -50,21 +73,21 @@ fun main() {
 
     /*   println(gamerCaroline)
        println(jogoResidenteVillace)*/
-   // println(gamerCaroline.jogosAlugados)
+    // println(gamerCaroline.jogosAlugados)
     println(gamerCamila)
-    gamerCamila.alugaJogo(jogoResidenteVillace,periodo)
+    gamerCamila.alugaJogo(jogoResidenteVillace, periodo)
     println(gamerCamila.jogosAlugados)
 
 
-    gamerCaroline.recomendarJogo(jogoResidenteVillace,8)
-    gamerCaroline.recomendarJogo(jogoTheLastOfUs,9)
+    gamerCaroline.recomendarJogo(jogoResidenteVillace, 8)
+    gamerCaroline.recomendarJogo(jogoTheLastOfUs, 9)
     println("Recomendacoes da Camila")
     println(gamerCamila.jogosRecomendados)
     println("Recomendacoes da Caroline")
     println(gamerCaroline.jogosRecomendados)
 
     val gson = GsonBuilder().excludeFieldsWithoutExposeAnnotation()
-                .create()
+        .create()
     val serializacao = gson.toJson(gamerCamila.jogosRecomendados)
     println("Serializacao")
     println(serializacao)
