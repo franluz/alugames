@@ -1,6 +1,16 @@
 package br.com.alura.alugames.dados
 
-abstract class DAO<TModel> {
+import br.com.alura.alugames.modelo.JogoEntity
+import javax.persistence.EntityManager
+
+abstract class DAO<TModel>(protected val manager: EntityManager) {
+
+    abstract fun toEntity(model:TModel)
     abstract fun getLista(): List<TModel>
-    abstract fun adicionar(model:TModel)
+    open fun adicionar(model:TModel){
+        val entity = toEntity(model)
+        manager.transaction.begin()
+        manager.persist(entity)
+        manager.transaction.commit()
+    }
 }
