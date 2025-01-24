@@ -4,21 +4,11 @@ import br.com.alura.alugames.modelo.JogoEntity
 import org.example.br.com.alura.alugames.modelo.Jogo
 import javax.persistence.EntityManager
 
-class JogosDAO(manager: EntityManager) : DAO<Jogo>(manager) {
+class JogosDAO(manager: EntityManager) : DAO<Jogo,JogoEntity>(manager,JogoEntity::class.java) {
 
-    override fun getLista(): List<Jogo> {
-        val query = manager.createQuery("FROM JogoEntity", JogoEntity::class.java)
-        return query.resultList.map { entity ->
-            Jogo(
-                entity.titulo,
-                entity.capa, entity.preco,
-                entity.descricao, entity.Id
-            )
-        }
 
-    }
 
-    override fun toEntity(model: Jogo) {
+    override fun toEntity(model: Jogo) :JogoEntity{
         return JogoEntity(
             model.titulo,
             model.capa,
@@ -27,6 +17,14 @@ class JogosDAO(manager: EntityManager) : DAO<Jogo>(manager) {
             model.Id
         )
 
+    }
+
+    override fun toModel(entity: JogoEntity): Jogo {
+      return  Jogo(
+          entity.titulo,
+          entity.capa, entity.preco,
+          entity.descricao, entity.Id
+      )
     }
 
 }
