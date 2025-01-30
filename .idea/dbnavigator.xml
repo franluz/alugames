@@ -20,9 +20,7 @@
     <last-used-providers />
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
-    <open-files>
-      <object connection-id="b402bed8-4a7f-419d-9e15-2b1a05deba4e" object-ref="schemas/alugames/tables/jogos" />
-    </open-files>
+    <open-files />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="b402bed8-4a7f-419d-9e15-2b1a05deba4e" dataset="alugames.jogos" active-filter-id="EMPTY_FILTER" />
