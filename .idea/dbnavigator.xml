@@ -25,6 +25,9 @@
   <component name="DBNavigator.Project.DatasetFilterManager">
     <filter-actions connection-id="b402bed8-4a7f-419d-9e15-2b1a05deba4e" dataset="alugames.jogos" active-filter-id="EMPTY_FILTER" />
   </component>
+  <component name="DBNavigator.Project.ExecutionManager">
+    <retain-sticky-names value="false" />
+  </component>
   <component name="DBNavigator.Project.ObjectQuickFilterManager">
     <last-used-operator value="EQUAL" />
     <filters />
