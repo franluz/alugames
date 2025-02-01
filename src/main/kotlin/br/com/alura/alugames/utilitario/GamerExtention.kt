@@ -1,6 +1,7 @@
 package br.com.alura.alugames.utilitario
 
 import br.com.alura.alugames.modelo.Gamer
+import br.com.alura.alugames.modelo.GamerEntity
 import br.com.alura.alugames.modelo.InfoGamerJson
 
 fun InfoGamerJson.criaGamer(): Gamer {
@@ -8,8 +9,24 @@ fun InfoGamerJson.criaGamer(): Gamer {
         this.nome,
         this.email,
         this.dataNascimento,
+        this.usuario
+        )
+}
+fun Gamer.toEntity():GamerEntity{
+    return GamerEntity(
+        this.Id,
+        this.nome,
+        this.email,
+        this.dataNascimento,
         this.usuario,
-
+        this.plano.toEntity()
     )
-
+}
+fun GamerEntity.toModel():Gamer{
+    return Gamer(
+        this.nome,
+        this.email,
+        this.Id
+    )
+        //.apply { plano = this.plano.toEntity().toModel() }
 }
